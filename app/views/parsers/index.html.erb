@@ -1,0 +1,21 @@
+<%= form_with url: parse_parsers_path, remote: true, id: 'logsForm' do |f| %>
+  <!--  # Render form for logs input -->
+  <p>
+    <%= f.label :logs %><br>
+    <%= f.text_area :logs, size: '50x10' %>
+  </p>
+  <%= f.submit 'Parse Logs' %>
+<% end %>
+
+<table id="logsTable">
+  <thead>
+    <tr>
+      <th>Event time</th>
+      <th>Source IP</th>
+      <th>Destination IP</th>
+      <th>Original event</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

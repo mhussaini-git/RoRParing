@@ -1,0 +1,23 @@
+<% logs.each do |log| %>
+  <% next unless log %>
+  <!-- render each event in row -->
+  <tr>
+    <!-- Convert date from unix to normal date -->
+    <td><%= DateTime.strptime(log["timestamp"].to_s,'%s') %></td>
+    <td>
+      <%= log.dig('src', 'value') %>
+      <br><%= log.dig('src', 'valid') ? '[VALID]' : '[INVALID]' %>
+      <% if log.dig('src', 'private') %>
+        <br>[PRIVATE]
+      <% end %>
+    </td>
+    <td>
+      <%= log.dig('dst', 'value') %>
+      <br><%= log.dig('dst', 'valid') ? '[VALID]' : '[INVALID]' %>
+      <% if log.dig('dst', 'private') %>
+        <br>[PRIVATE]
+      <% end %>
+    </td>
+    <td><%= log["event"] %></td>
+  </tr>
+<% end %>
